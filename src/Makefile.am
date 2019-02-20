@@ -227,19 +227,19 @@ noinst_DATA = \
 sample_player_SOURCES = \
 	$(CHAINACTIONSOURCES) \
 	$(PLAYERSOURCES)
-sample_player_CXXFLAGS = -W -Wall
+sample_player_CXXFLAGS = -W -Wall -std=c++11
 sample_player_LDFLAGS =
 sample_player_LDADD =
 
 sample_coach_SOURCES = \
 	$(COACHSOURCES)
-sample_coach_CXXFLAGS = -W -Wall
+sample_coach_CXXFLAGS = -W -Wall -std=c++11
 sample_coach_LDFLAGS =
 sample_coach_LDADD =
 
 sample_trainer_SOURCES = \
 	$(TRAINERSOURCES)
-sample_trainer_CXXFLAGS = -W -Wall
+sample_trainer_CXXFLAGS = -W -Wall -std=c++11
 sample_trainer_LDFLAGS =
 sample_trainer_LDADD =
 
@@ -249,8 +249,8 @@ noinst_HEADERS = \
 	$(TRAINERHEADERS)
 
 AM_CPPFLAGS = -I$(top_srcdir)/src  -I$(top_srcdir)/src/chain_action
-AM_CFLAGS = -W -Wall
-AM_CXXFLAGS = -W -Wall
+AM_CFLAGS = -W -Wall -std=c++11
+AM_CXXFLAGS = -W -Wall -std=c++11
 AM_LDLAGS =
 
 CLEANFILES = core *~

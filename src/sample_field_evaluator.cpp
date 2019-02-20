@@ -40,6 +40,13 @@
 #include <algorithm>
 #include <cmath>
 #include <cfloat>
+#include <CppDNN/DeepNueralNetwork.h>
+
+#include <eigen3/Eigen/Dense>
+using Eigen::MatrixXd;
+using std::cout;
+using std::endl;
+using std::vector;
 
 // #define DEBUG_PRINT
 
@@ -176,6 +183,17 @@ evaluate_state( const PredictState & state )
     point += std::max( 0.0,
                        40.0 - ServerParam::i().theirTeamGoalPos().dist( state.ball().pos() ) );
 
+    DeepNueralNetwork dnn;
+    dnn.ReadFromKeras("./data/decoded/base");
+    double x = state.ball().pos().x;
+    double y = state.ball().pos().y;
+    x += 52.5; x/= 105;
+    y +=35; y /= 70;
+    MatrixXd input(2,1);
+    input(0,0) = 1;
+    input(1,0) = 2;
+//    dnn.Calculate(input);
+//    point = dnn.mOutput(0,0);
 #ifdef DEBUG_PRINT
     dlog.addText( Logger::ACTION_CHAIN,
                   "(eval) ball pos (%f, %f)",
